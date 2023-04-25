@@ -1,0 +1,62 @@
+
+html {margin: 0; padding: 0; height:100%;}
+body {
+margin: 0; padding: 0; height:100%;
+    background-color: aliceblue;
+}
+nav { border : 3px  double blue; font-weight : bold; 
+  text-align:center;}
+//블록처럼 줄전체를 차지하는게 아닌 컨텐츠 너비만큼 차지 //블록 요소안의 inline요소 정렬
+.navi {width:100%; text-align: center; }  
+.table {display: inline-block;}                 
+.navi th {   height:56px; padding:0; margin:20px; width:200px;
+}
+.navi th a:hover {color:red; }
+h1 {
+            text-align: center;
+            color: yellow;
+            text-shadow: 2px 2px 4px blue;
+	font-family: "휴먼편지체";
+	font-size: 3em;
+   	
+        }
+section {  height: 80%; }
+.content {width:100%; text-align: center;}      
+.content table {width:100%; margin:7px;}
+.content th {width:274px; margin:0 20px;}
+.content th a img {width:274px; height:274px; }
+.content th a:hover { color:red; }
+.content th a:hover img { 
+box-shadow : 12px 12px 2px 1px rgba(0, 0, 255, .2); // x, y , 흐림정도, 그림자 확장, 
+opacity:0.8;
+}
+h2{ 
+            text-shadow: 2px 2px 4px blue;
+	font-family: "휴먼편지체";
+   	 text-indent: 2em; //들여쓰기
+}
+.content li p {height:46px; margin:7px 0 6px; line-height:20px;}
+footer {
+    border-radius: 20px;
+    background-color: orange;
+    font-family: "휴먼편지체";
+    font-size: 1em;
+    width:100%;
+    text-align:center;
+}
+footer li {list-style: none;}
+footer li a:hover {color:red; }
+
+
+p {
+    font-family: "휴먼편지체";
+}
+h3 {
+    color: blue;
+    text-shadow: 2px 2px 4px skyblue;
+}
+a {
+    text-decoration: none;
+}
+
+
