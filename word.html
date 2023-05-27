@@ -24,14 +24,23 @@ iframe {display:inline;}
     </div></div>
 </nav>
 <section>
-     <iframe src="wordnav.html" name ="left" width="20%" height="100%"></iframe>
-     <iframe src="wordcontent1.html" name="right" width="78%" height="100%"></iframe>
+<div id="wordnav">
+      <ul>
+        <li><h2><a href="./wordcontent1.html" target="right">기본용어<a></h2></li>
+        <li><h2><a href="./wordcontent2.html" target="right">선물, 옵션 용어<a></h2></li>
+        <li><h2><a href="./wordcontent3.html" target="right">일반 주식 용어<a></h2></li>
+      </ul>
+    </div>
+<div style="float:left;  width:80%; height:100%;">
+<iframe src="wordcontent1.html" name="right" width="100%" height="100%"  style="border-style: none;"></iframe>
+</div>
+     
 </section>
 
 <footer class = "footer">
-  <div id>
+  <div>
   <hr>
-    <div id>
+    <div>
             <ul>
          <li><a href="" target="_blank">서식2</a></li>
         <li><a href="" target="_blank">서식</a></li>
