@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="4.css" type="text/css" rel="stylesheet">
+    <title> 웹프로그래밍 프로젝트</title>
+    <style>
+        .logo {
+            width :150px;
+            height :100px;
+            background-size: 100% 100%;
+        }
+        .KB {
+        }
+       
+        <!-- background-size : 이미지가 들어갈 요소 기준으로 백분율 값을 지정 -->
+    </style>
+    <script>
+        const KB_Data = `일자,시가
+2023-05-24,68100
+2023-05-23,68500
+2023-05-22,68400
+2023-05-19,67800
+2023-05-18,66000
+2023-05-17,65900
+2023-05-16,65800
+2023-05-15,64100
+2023-05-12,63700
+2023-05-11,64700
+2023-05-10,65500
+2023-05-09,65800
+2023-05-08,66300
+2023-05-04,65600
+2023-05-03,65100
+2023-05-02,66000
+2023-04-28,65200
+2023-04-27,64100
+2023-04-26,63600
+2023-04-25,65300
+2023-04-24,65300
+`;
+
+        const KB_Arr = [];
+
+        var KB_num = 0;
+        
+        var SS_num = 0;
+        
+
+        function data_to_arr(data, arr) {
+            var rowdata = data.split('\n');
+            for (i = 0; i < rowdata.length; i++) {
+                arr[i] = rowdata[i].split(',');
+            }
+        }
+       
+        function Value_Update(obj) {
+            var name = "";
+            var arr = [];
+
+            for (i = 0; i < obj.classList.length; i++) { 
+            switch (obj.classList.item(i)) {
+                case "KB":
+                    name = "KB";
+                    arr = KB_Arr;
+                    
+                    break;
+                case "SS":
+                    name = "SS";
+                    arr = KB_Arr;
+                  
+                    break;
+                case "KB":
+                    name = "KB";
+                    
+                    break;
+                case "KB":
+                    name = "KB";
+                   
+                    break;
+                default:
+                    break;
+                }
+            }
+                var buy = document.getElementById(name+"quantity");
+                var buydate = document.getElementById(name +"_BuyDate");
+                var buyId = document.getElementById(name +"_Buy_value");
+                var buysum = document.getElementById(name +"_Buy_sum");
+                var selldate = document.getElementById(name +"_SellDate");
+                var sellId = document.getElementById(name +"_Sell_value");
+                var sellsum = document.getElementById(name +"_Sell_sum");
+                var value = document.getElementById(name +"_value");
+                for (var i = 1; i < arr.length; i++) {
+                    if (arr[i][0] <= buydate.value) {
+                        buyId.innerHTML = arr[i][1];
+                        buysum.innerHTML = buy.value * arr[i][1];
+                        break;
+                    }
+                }
+                for (var i = 1; i < arr.length; i++) {
+                    if (arr[i][0] <= selldate.value) {
+                        sellId.innerHTML = arr[i][1];
+                        sellsum.innerHTML = buy.value * arr[i][1];
+                        break;
+                    }
+                }
+            value.innerHTML = (sellsum.innerHTML - buysum.innerHTML) +
+                " \| (" + ((sellsum.innerHTML - buysum.innerHTML) / sellsum.innerHTML).toFixed(2) + ")";
+                if (sellsum.innerHTML - buyId.innerHTML > 0) {
+                    value.style.color = "red";
+                } else value.style.color = "blue";
+
+         }
+
+        
+        function Num_Update(obj) {
+            if (obj.value < 0) {
+                obj.value = 0;
+            }
+            switch (obj.className) {
+                case "KB":
+                    KB_num = obj.value;
+                    break;
+                case "SS":
+                    SS_num = obj.value;
+                    break;
+                default:
+                    break;
+            }
+            Value_Update(obj);
+        }
+        function BuyDate_Update(obj) {
+            if (obj.value < "2023-04-24" ||
+                obj.value > "2023-05-24") {
+                obj.value = "2023-04-24";
+            }   
+            Value_Update(obj);
+        }
+
+        function SellDate_Update(obj) {
+            if (obj.value < "2023-04-24" ||
+                obj.value > "2023-05-24") {
+                obj.value = "2023-05-24";
+            }
+            Value_Update(obj);
+        }
+
+        function Total() {
+            var quantity = document.getElementById("Total_quantity");
+            var buy = document.getElementById("Total_Buy");
+            var sell = document.getElementById("Total_Sell");
+            var Total = document.getElementById("Total");
+            var Total_Buy = 0;
+            var Total_Sell = 0;
+            quantity.innerHTML = parseInt(KB_num) + parseInt(SS_num);
+
+            var Buy_elements = document.getElementsByClassName('Buy');
+            for (let i = 0; i < Buy_elements.length; i++) {
+                Total_Buy += parseInt(Buy_elements.item(i).textContent);
+            }
+            buy.innerHTML = Total_Buy;
+
+            var Sell_elements = document.getElementsByClassName('Sell');
+            for (let i = 0; i < Sell_elements.length; i++) {
+                Total_Sell += parseInt(Sell_elements.item(i).textContent);
+            }
+            sell.innerHTML = Total_Sell;
+
+            Total.innerHTML = (Total_Sell - Total_Buy) +" \| (" + ((Total_Sell - Total_Buy) / Total_Buy).toFixed(2) + ")";
+
+            if (Total_Sell - Total_Buy > 0) {
+                Total.style.color = "red";
+            } else Total.style.color = "blue";
+        }
+        function AllBuyDate(obj) {
+            if (obj.value < "2023-04-24" ||
+                obj.value > "2023-05-24") {
+                obj.value = "2023-04-24";
+            }
+            var elements = document.getElementsByClassName('buy_date');
+            for (let i = 0; i < elements.length; i++) {
+                elements.item(i).value = obj.value;
+            }
+        }
+        function AllsellDate(obj) {
+            if (obj.value < "2023-04-24" ||
+                obj.value > "2023-05-24") {
+                obj.value = "2023-05-24";
+            }
+            var elements = document.getElementsByClassName('sell_date');
+            for (let i = 0; i < elements.length; i++) {
+                elements.item(i).value = obj.value;
+            }
+        }
+        data_to_arr(KB_Data, KB_Arr);
+    </script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>종목</th>
+                <th>개수</th>
+                <th>구매일자<br />(2023-04-24 ~ <br />2023-05-24)</th>
+                <th>구매시가</th>
+                <th>구매총액</th>
+                <th>판매일자<br />(2023-04-24 ~ <br />2023-05-24)</th>
+                <th>판매시가</th>
+                <th>판매총액</th>
+                <th>차익<br />원 | (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="logo" style="background-image: url('KB로고.jpg');"></td>
+
+                <td>
+                    <input type="number" class="KB" id="KBquantity" value="0" min="0" onchange="Num_Update(this)" />
+                </td>
+                <td>
+                    <input type="date" class="KB buy_date" id="KB_BuyDate" value="2023-04-24" min="2023-04-24" max="2023-05-24"
+                           onchange="BuyDate_Update(this)" />
+                </td>
+                <td class="KB" id="KB_Buy_value"></td>
+                <td class="KB Buy" id="KB_Buy_sum">0</td>
+                <td>
+                    <input type="date" class="KB sell_date" id="KB_SellDate" value="2023-05-24" min="2023-04-24" max="2023-05-24"
+                           onchange="SellDate_Update(this)">
+                </td>
+                <td class="KB" id="KB_Sell_value"></td>
+                <td class="KB Sell" id="KB_Sell_sum">0</td>
+                <td class="KB" id="KB_value">0</td>
+            </tr>
+
+            <tr>
+                <td class="logo" style="background-image: url('삼성로고.png');"></td>
+
+                <td>
+                    <input type="number" class="SS" id="SSquantity" value="0" min="0" onchange="Num_Update(this)" />
+                </td>
+                <td>
+                    <input type="date" class="SS buy_date" id="SS_BuyDate" value="2023-04-24" min="2023-04-24" max="2023-05-24"
+                           onchange="BuyDate_Update(this)" />
+                </td>
+                <td class="SS" id="SS_Buy_value"></td>
+                <td class="SS Buy" id="SS_Buy_sum">0</td>
+                <td>
+                    <input type="date" class="SS sell_date" id="SS_SellDate" value="2023-05-24" min="2023-04-24" max="2023-05-24"
+                           onchange="SellDate_Update(this)">
+                </td>
+                <td class="SS" id="SS_Sell_value"></td>
+                <td class="SS Sell" id="SS_Sell_sum">0</td>
+                <td class="SS" id="SS_value">0</td>
+            </tr>
+            <tr>
+            </tr>
+            <tr>
+                <td>합계 : </td>
+                <td id="Total_quantity"></td>
+                <td></td>
+                <td></td>
+                <td id="Total_Buy"></td>
+                <td></td>
+                <td></td>
+                <td id="Total_Sell"></td>
+                <td id="Total"></td>
+            </tr>
+
+        </tbody>
+
+    </table>
+    구매일자 전체 변경<input type="date" value="2023-04-24" min="2023-04-24" max="2023-05-24" onchange="AllBuyDate(this)" /><br />
+    판매일자 전체 변경<input type="date" value="2023-05-24" min="2023-04-24" max="2023-05-24" onchange="AllsellDate(this)" /><br />
+    <input type="button" value="합계 계산" onclick="Total()" />
+</body>
+</html>

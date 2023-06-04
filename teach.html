@@ -1,56 +1,111 @@
 <!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <link href="4.css" type="text/css" rel="stylesheet">
 <title> 웹프로그래밍 프로젝트</title>
 <style>
-
+    .datablock {
+        position: relative;
+        /*  자신의 위치를 기준으로 배치*/
+        width : 500px;
+        height : 300px;
+        
+    }
 </style>
 </head>
 <body>
 
 <nav>
-<div>
+
 <div class="navi">
 <div class ="table">
       <table>
-<tr><h1>sd</h1></tr>
-	<tr>
-	<th><a href="./word.html">단어</a></th>
-	<th><a href="./index.html">주식종목</a></th>
-	<th><a href="./teach.html">강의</a></th>
-</tr>
+          <tr><h1>Stock.html</h1></tr>
+          <tr>
+              <th><a href="./word.html">단어</a></th>
+              <th><a href="./index.html">주식종목</a></th>
+              <th><a href="./teach.html">강의</a></th>
+              <th><a href="./calcul.html">계산기</a></th>
+          </tr>
 </table>
     </div></div>
 </nav>
 
 <section>
      <div>
-      <dl>
-	<dt><h2>이번주 주식정보<h2></dt>
-              <dd>
-           <iframe width="480" height="270" src="https://www.youtube.com/embed/4vFR_GQzNgI" title="YouTube video player" frameborder="0" 
-	 allowfullscreen></iframe>
-                      </a>
-	</dd>
-          <dd>
-          <p>[Rocky Linux] 록키 리눅스 네트워크 관련 필수 개념과 명령어</p>
-          </dd>
-        
-      </ul>
+         <ol>
+             <li>
+                 <h2> 주식 유튜브 강의</h2>
+                 <div style="height:300px">
+                     <div class="datablock">
+                         <iframe width="480" height="270" src="https://www.youtube.com/embed/LzXzHoXO5ZE"
+                                 title="주식을 하려면 꼭 알고 있어야 할 기본 지식 | 주식초보 입문서" frameborder="0"
+                                 allowfullscreen></iframe>
+                         <p>주식을 하려면 꼭 알고 있어야 할 기본 지식 | 주식초보 입문서</p>
+                     </div>
+                     <div class="datablock" style="bottom:300px; left:500px;">
+                         <iframe width="480" height="270" src="https://www.youtube.com/embed/EeJxAxyckbk" title="분명히 오를 것 같았는데.." frameborder="0"
+                                 allowfullscreen></iframe>
+                         <p>우리는 왜 잃는가</p>
+                     </div>
+                     <div class="datablock" style="bottom:600px;left:1000px;">
+                         <iframe width="480" height="270" src="https://www.youtube.com/embed/nYIXu8t3jg0" title="최고민수 선생님의 주식 ETF 투자 방법 7단계 특강 - 풀버전" frameborder="0"
+                                 allowfullscreen></iframe>
+                         <p>최고민수 선생님의 주식 ETF 투자 방법 7단계 특강 - 풀버전"</p>
+                     </div>
+                 </div>
+             </li>
+             
+             <li>
+                 <h2> 주식 리포트</h2>
+                 <div>
+                     <div class="datablock">
+                         <a href="https://securities.miraeasset.com/bbs/download/2108581.pdf?attachmentId=2108581">
+                             <img src="하반기전략.png" width="380" height="540"><br />
+                             2023하반기 전망
+                         </a>
+                     </div>
+                     <div class="datablock" style="bottom:300px; left:500px;"> 
+                         <a href="https://securities.miraeasset.com/bbs/download/2108419.pdf?attachmentId=2108419">
+                             <img src="삼성증권.png" width="380" height="540"><br />
+                             삼성증권
+                         </a>
+                     </div>
+                     <div class="datablock" style="bottom:600px; left:1000px;"">
+                         <a href="https://securities.miraeasset.com/bbs/board/message/view.do?messageId=2304442&messageNumber=119&messageCategoryId=0&startId=zzzzz%7E&startPage=1&curPage=1&searchType=2&searchText=&searchStartYear=2022&searchStartMonth=06&searchStartDay=03&searchEndYear=2023&searchEndMonth=06&searchEndDay=03&lastPageFlag=&vf_headerTitle=&categoryId=1698">
+                             <img src="시장AI.png" width="380" height="540"><br />
+                             시장읽어주는 AI(6월 2일)
+                         </a>
+                     </div>
+                 </div>
+             </li>
+
+         </ol>
   </div>
 </section>
 
-<footer class = "footer">
-  <div id>
-  <hr>
-    <div id>
-            <ul>
-         <li><a href="" target="_blank">서식2</a></li>
-        <li><a href="" target="_blank">서식</a></li>
-      </ul>
-          </div>
-<div>
-</footer>
+<footer class="footer">
+    <hr>
+    <div>
+        <ul>
+            <li>
+                <a href="https://ecos.bok.or.kr/#/StatisticsMeta/StatisticsGlossary" target="_blank">단어 </a><a>|</a>
+                <a href="https://www.catch.co.kr/" target="_blank"> 기업</a> <a>|</a>
+                <a href="https://comp.fnguide.com/" target="_blank">주식 </a><a>|</a>
+                <a href="https://www.tradingview.com/widget/advanced-chart/" target="_blank"> 차트</a>
+            </li>
+            <li>
+                <a>github : https://github.com/SunJaeJin/SunJaeJin.github.io </a>
+            </li>
+            <li>
+                <a>이메일 : slslslsjemf@gachon.ac.kr </a>
+            </li>
+            <li>
+                <a>가천대학교 웹프로그래밍 프로젝트</a>
+            </li>
+        </ul>
+    </div>
 
+</footer>
 </body></html>
